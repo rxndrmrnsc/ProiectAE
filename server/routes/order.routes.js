@@ -9,6 +9,7 @@ Order.belongsTo(User, {foreignKey: "userId"})
 
 const router = express.Router();
 
+// CRUD for order
 router.post('/', async (req, res) => {
     const user = await User.findByPk(req.body.userId)
 
@@ -34,7 +35,7 @@ router.get('/', async (req, res) => {
     res.status(200).json(orders);
 })
 
-router.put('/:oid', async (req, res) => {
+router.put('/:pid', async (req, res) => {
     const user = await User.findByPk(req.body.userId)
 
     if(!user) {
@@ -53,7 +54,7 @@ router.put('/:oid', async (req, res) => {
     res.status(200).json({ success: true, message: "Order updated", data: order});
 })
 
-router.delete('/:oid', async (req, res) => {
+router.delete('/:pid', async (req, res) => {
     const user = await User.findByPk(req.body.userId)
 
     if(!user) {
