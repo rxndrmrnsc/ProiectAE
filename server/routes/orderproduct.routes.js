@@ -1,6 +1,4 @@
 const express = require('express');
-const { Op } = require("sequelize");
-const bcrypt = require('bcrypt');
 const User = require("../database/models/User");
 const Product = require("../database/models/Product");
 const Order = require("../database/models/Order");
