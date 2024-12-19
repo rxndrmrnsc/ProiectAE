@@ -1,6 +1,5 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const cors = require('cors');
 const morgan = require('morgan');
 const User = require('./database/models/User');
 const Order = require('./database/models/Order');
@@ -11,8 +10,10 @@ const productRoutes = require('./routes/product.routes');
 const orderProductRoutes = require('./routes/orderproduct.routes');
 const {verifyToken} = require('./utils');
 
+const cors=require("cors");
 const app = express();
 dotenv.config();
+app.use(cors());
 
 const PORT = process.env.PORT || 3000;
 

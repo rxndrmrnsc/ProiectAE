@@ -71,9 +71,9 @@ router.delete('/:pid', async (req, res) => {
     res.status(200).json({ success: true, message: "Product deleted" });
 })
 
-router.get('/filter', async (req, res) => {
-    const priceMin = req.query.priceMin
-    const priceMax = req.query.priceMax
+router.post('/filter', async (req, res) => {
+    const priceMin = req.body.priceMin
+    const priceMax = req.body.priceMax
 
     const products = await Product.findAll({
         where: {

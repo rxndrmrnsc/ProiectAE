@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProducts } from "./utils";
+import { getProducts } from "../utils";
 
 function Products(props) {
   const { filters, setFilters } = props;

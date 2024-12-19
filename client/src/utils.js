@@ -1,14 +1,22 @@
 export const getProducts = async (filters) => {
-    let url = `${import.meta.env.API_URL}/`
-    if (filters.priceRange) {
-        url += `/filter/`
-    }
-    const response = await fetch(url);
+    console.log(filters)
+    let body = {};
+    body.priceMin = filters[0];
+    body.priceMax = filters[1];
+
+    const response = await fetch(`http://localhost:3000/products/filter`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    });
     const json = await response.json();
     return json;
 }
 export const getPriceRange = async () => {
-    const result = await fetch(`${import.meta.env.API_URL}/products/priceRange`);
+    const result = await fetch(`http://localhost:3000/products/priceRange`);
     const response = await result.json();
-    return response;
+    const arr = [response.minPrice, response.maxPrice]
+    return arr;
 };
